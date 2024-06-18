@@ -33,12 +33,12 @@ router.post("/ingreso", async (req, res) => {
   try {
     const usuario = req.body;
     const result = await existeUsuario(usuario);
-    if(result === null) {
-      throw new Error('Usuario no existe');
+    if (result === null) {
+      throw new Error("Usuario no existe");
     }
     res.status(200).json(result);
   } catch (error) {
-    if (error.message === 'Usuario no existe') {
+    if (error.message === "Usuario no existe") {
       res.status(401).json({ error: error.message });
     } else {
       res.status(400).json({ error: error.message });
